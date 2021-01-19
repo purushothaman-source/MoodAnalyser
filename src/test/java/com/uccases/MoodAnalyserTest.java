@@ -17,10 +17,14 @@ public class MoodAnalyserTest {
         Assert.assertEquals("HAPPY", mood);
     }
     @Test
-    public void givenNull_ShouldReturn_Happy() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String mood = moodAnalyser.analyseMood();
-        Assert.assertEquals("HAPPY", mood);
+    public void givenNull_throw_CustomException() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        String mood = null;
+        try {
+            mood = moodAnalyser.analyseMood(null);
+        } catch (MoodAnalyserException e) {
+        Assert.assertEquals("Please Enter Proper Mood",e.getMessage());
+        }
     }
 
 
